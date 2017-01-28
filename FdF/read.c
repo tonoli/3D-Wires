@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itonoli- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/21 23:03:34 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/01/28 18:21:25 by itonoli-         ###   ########.fr       */
+/*   Created: 2017/01/28 15:08:18 by itonoli-          #+#    #+#             */
+/*   Updated: 2017/01/28 20:06:39 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-#define FDF_H
-# include "libft/libft.h"
-# include <mlx.h>
+#include "fdf.h"
 
-struct		s_point
+void	ft_read(char *path)
 {
-	int		x;
-	int		y;
-	int		z;
-	int		c;
-}typedef	t_point;
+	int		fd;
+	char	*line;
+	char	**tab;
 
-struct		s_map
-{
-	int		col_len;
-	int		line_len;
-	t_point	*points;
-}typedef	t_map;
-
-struct		s_env
-{
-	void	*mlx;
-	void	*win;
-	t_map	map;
-}typedef	t_env;
-
-#endif
+	fd = open(path, O_RDONLY);
+	while (get_next_line(fd, &line) == 1)
+	{
+		tab = ft_strsplit(line, ' ');
+	}
+	close (fd);
+}
