@@ -12,8 +12,14 @@
 
 #ifndef FDF_H
 #define FDF_H
+
 # include "libft/libft.h"
-# include <mlx.h>
+# include "mlx/mlx.h"
+# include <math.h>
+
+# define WIDTH	2560
+# define HEIGHT	1400
+
 
 struct		s_point
 {
@@ -34,7 +40,46 @@ struct		s_env
 {
 	void	*mlx;
 	void	*win;
-	t_map	map;
+	t_image	*img;
+	t_map	*map;
+	double	point_d;
+	double	z_max;
+	double	z_min;
 }typedef	t_env;
+
+
+typedef struct	s_delta
+{
+	int		x;
+	int		y;
+	int		abs_x;
+	int		abs_y;
+}				t_delta;
+/*
+typedef struct	s_fdf
+{
+	int		height;
+	int		width;
+	int		depth;
+	t_point	view;
+	t_point	pos;
+	int		**input;
+	t_point	**grid;
+}				t_fdf;
+
+typedef struct	s_mlx
+{
+	int		height;
+	int		width;
+	void	*mlx;
+	void	*window;
+}				t_mlx;
+
+typedef struct	s_data
+{
+	t_fdf	*fdf;
+	t_mlx	*mlx;
+}				t_data;
+*/
 
 #endif

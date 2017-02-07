@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   run.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itonoli- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/21 22:48:46 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/01/22 16:11:56 by itonoli-         ###   ########.fr       */
+/*   Created: 2017/01/28 15:08:18 by itonoli-          #+#    #+#             */
+/*   Updated: 2017/01/28 20:06:39 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
 
-int		main(int argc, char **argv)
+
+# include "fdf.h"
+#define ESC			53
+
+int	key_hook(int keycode, t_data *data)
 {
-	t_env		*env;
-
-	if (argc != 2)
-	{
-		ft_putendl("Usage : ./fdf <filename> [ ... ]");
-		return (0);
-	}
-	env.mlx = mlx_init();
-	env.win = mlx_new_window(env -> mlx, WIDTH, HEIGHT, "FDF");
-	read(argv[1], &env);
-	run(env -> win, &env);
-	mlx_loop(env -> mlx);
+	if (keycode == ESC)
+		exit(0);
 	return (0);
+}
+
+void	run(void* win, t_env* env)
+{
+	t_data	data;
+
+	data.win = win;
+	data.env = env;
+	mlx_expose_hook(env -> win, draw, &env);
+	mlx_key_hook(env -> win, key_hook, &env);
 }
