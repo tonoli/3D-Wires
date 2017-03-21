@@ -6,7 +6,7 @@
 /*   By: itonoli- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/21 23:03:34 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/01/28 18:21:25 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/03/21 20:03:30 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # define WIDTH	2560
 # define HEIGHT	1400
 
-
 struct		s_point
 {
 	int		x;
@@ -29,22 +28,13 @@ struct		s_point
 	int		c;
 }typedef	t_point;
 
-struct		s_map
-{
-	int		col_len;
-	int		line_len;
-	t_point	*points;
-}typedef	t_map;
-
 struct		s_env
 {
 	void	*mlx;
 	void	*win;
-	t_image	*img;
-	t_map	*map;
-	double	point_d;
-	double	z_max;
-	double	z_min;
+	int 	**mapi;
+	int		lines;
+	int		col;
 }typedef	t_env;
 
 
@@ -55,31 +45,7 @@ typedef struct	s_delta
 	int		abs_x;
 	int		abs_y;
 }				t_delta;
-/*
-typedef struct	s_fdf
-{
-	int		height;
-	int		width;
-	int		depth;
-	t_point	view;
-	t_point	pos;
-	int		**input;
-	t_point	**grid;
-}				t_fdf;
 
-typedef struct	s_mlx
-{
-	int		height;
-	int		width;
-	void	*mlx;
-	void	*window;
-}				t_mlx;
-
-typedef struct	s_data
-{
-	t_fdf	*fdf;
-	t_mlx	*mlx;
-}				t_data;
-*/
+int		ft_read(char *path, t_env *env);
 
 #endif

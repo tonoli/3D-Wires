@@ -6,7 +6,7 @@
 #    By: itonoli- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/06 18:25:44 by itonoli-          #+#    #+#              #
-#    Updated: 2017/01/21 22:01:50 by itonoli-         ###   ########.fr        #
+#    Updated: 2017/03/21 17:24:52 by itonoli-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ ft_lstadd_back.c \
 ft_lstsize.c \
 ft_join.c \
 get_next_line.c \
+ft_char_counter.c \
 
 OBJ= $(SRC:.c=.o)
 

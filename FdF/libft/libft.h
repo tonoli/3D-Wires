@@ -6,7 +6,7 @@
 /*   By: itonoli- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 18:55:20 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/01/21 22:01:12 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/03/21 17:25:38 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+int				ft_char_counter(char *str, char c);
 int				get_next_line(const int fd, char **line);
 void			*ft_memset(void *b, int c, size_t len);
 void			*ft_memcpy(void *dst, const void *src, size_t n);

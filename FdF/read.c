@@ -6,74 +6,77 @@
 /*   By: itonoli- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 15:08:18 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/02/07 15:58:56 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/03/21 20:03:13 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	get_lines(char *path)
+int		ft_tablen(char **tab)
 {
-	int fd;
-	char *line;
-	int nb_lines;
+	int i;
 
-	nb_lines = 0;
-	fd = open(path, O_RDONLY);
-	while (get_next_line(fd, &line) > 0)
-		nb_lines++;
-	close(fd);
-	return (nb_lines);
+	i = 0;
+	if (!tab)
+		return (0);
+	while (tab[i] != '\0')
+		i++;
+	return (i);
 }
 
-int	get_col(char *path)
+int		get_size(char *path, t_env *env)
 {
 	int fd;
 	char *line;
 	int nb_col;
-	char **tab;
+	int j;
 	int i;
 
 	nb_col = 0;
+	j = 0;
 	fd = open(path, O_RDONLY);
-	get_next_line(fd, &line);
-	nb_col = ft_strlen(ft_strsplit(line, ' '));
 	while (get_next_line(fd, &line) > 0)
 	{
-		tab = ft_strsplit(line, ' ');
-		i = ft_strlen(tab);
-		if (i > nb_col)
-			reutrn(-1);
+		i = ft_tablen(ft_strsplit(line, ' '));
+		if (i > nb_col && nb_col == 0)
+			nb_col = i;
+		if (i != nb_col)
+			return (0);
+		j++;
 	}
-	return (nb_col);
+	env->lines = j;
+	env->col = nb_col;
+	close(fd);
+	return (1);
 }
 
-int	ft_read(char *path, t_env *env)
+int		ft_read(char *path, t_env *env)
 {
 	int		fd;
 	char	*line;
-	char	i;
-	char	j;
+	char	**tab;
+	int		i;
+	int		j;
 
-	env.lines = get_lines(path);
-	env.col = get_col(path);
-	if (env.col == -1)
+	if (!(get_size(path, env)))
 	{
 		ft_putendl("Warning the file has an error.");
-		return(0);
+		return (0);
 	}
-	env.map = (int **)malloc(sizeof(int) * env->lines);
+	if (!(env->mapi = malloc(sizeof(int *) * env->lines)))
+		return (0);
 	fd = open(path, O_RDONLY);
-	i = 0;
-	while (i < env->lines)
+	i = -1;
+	while (++i < env->lines)
 	{
 		get_next_line(fd, &line);
-		env.map[i] = (int *)malloc(sizeof(int) * env->col);
-		j = 0;
-		while (j < env->col)
-		{
-			env.map[i][j] = (int)
-		}
+		tab = ft_strsplit(line, ' ');
+		if (!(env->mapi[i] = malloc(sizeof(int) * env->col)))
+			return (0);
+		j = -1;
+		while (++j < env->col)
+			env->mapi[i][j] = ft_atoi(tab[j]);
 	}
 	close (fd);
+	return (1);
 }

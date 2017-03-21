@@ -6,13 +6,13 @@
 #    By: itonoli- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/05 14:21:39 by itonoli-          #+#    #+#              #
-#    Updated: 2017/02/05 14:25:44 by itonoli-         ###   ########.fr        #
+#    Updated: 2017/03/21 19:42:33 by itonoli-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    = fdf
 FLAGS   = -Wall -Wextra -Werror
-SRC   = main.c read.c draw.c draw_line.c
+SRC   = main.c read.c
 OBJ = $(SRC:.c=.o)
 MLX  = -L./libft -lft -L./minilibx -lmlx -framework OpenGL -framework AppKit
 
