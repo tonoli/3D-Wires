@@ -6,7 +6,7 @@
 /*   By: itonoli- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 15:08:18 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/01/28 20:06:39 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/02/07 15:58:56 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ int	get_col(char *path)
 	int fd;
 	char *line;
 	int nb_col;
+	char **tab;
+	int i;
 
-	nb_lines = 0;
+	nb_col = 0;
 	fd = open(path, O_RDONLY);
 	get_next_line(fd, &line);
 	nb_col = ft_strlen(ft_strsplit(line, ' '));
@@ -54,7 +56,7 @@ int	ft_read(char *path, t_env *env)
 	char	j;
 
 	env.lines = get_lines(path);
-	env.col	= get_col(path);
+	env.col = get_col(path);
 	if (env.col == -1)
 	{
 		ft_putendl("Warning the file has an error.");
@@ -70,7 +72,8 @@ int	ft_read(char *path, t_env *env)
 		j = 0;
 		while (j < env->col)
 		{
-			env.map[i][j] = (int)		}
+			env.map[i][j] = (int)
+		}
 	}
 	close (fd);
 }
