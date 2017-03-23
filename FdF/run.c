@@ -6,7 +6,7 @@
 /*   By: itonoli- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 15:08:18 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/01/28 20:06:39 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/03/23 17:54:44 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	key_hook(int keycode, t_data *data)
 	return (0);
 }
 
-void	run(void* win, t_env* env)
+void	run(void* win, t_env *env)
 {
 	t_data	data;
 
