@@ -6,7 +6,7 @@
 /*   By: itonoli- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/21 22:48:46 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/03/21 19:43:22 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/03/28 11:35:58 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ int		main(int argc, char **argv)
 	env->mlx = mlx_init();
 	env->win = mlx_new_window(env->mlx, WIDTH, HEIGHT, "FDF");
 	ft_read(argv[1], env);
-	mlx_loop(env -> mlx);
+	mlx_loop(env->mlx);
 	return (0);
 }

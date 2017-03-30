@@ -6,7 +6,7 @@
 #    By: itonoli- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/05 14:21:39 by itonoli-          #+#    #+#              #
-#    Updated: 2017/03/21 19:42:33 by itonoli-         ###   ########.fr        #
+#    Updated: 2017/03/28 11:37:10 by itonoli-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ fdf_only:
 		@ gcc $(FLAGS) -o $(NAME) $(OBJ) $(MLX)
 
 clean:
-		rm -f $(OBJECTS)
+		rm -f $(OBJ)
 
 fclean: clean
 		rm -f $(NAME)

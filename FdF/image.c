@@ -6,7 +6,7 @@
 /*   By: itonoli- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 17:59:42 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/03/24 21:52:11 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/03/28 11:34:42 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	fill_img(t_env *env, int current_x)
 	while	(pen != env->draw_end)
 	{
 		put_pixel_to_img(env, current_x, pen);
-		mlx_put_image_to_window(env->mlx, env->win, env->img, 420, 420);
+		mlx_put_image_to_window(env->mlx, env->win, env->ptr_img, 420, 420);
 		pen++;
 	}
 }
