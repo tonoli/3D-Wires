@@ -6,7 +6,7 @@
 /*   By: itonoli- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 15:08:18 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/03/21 20:03:13 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/10 22:03:45 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_tablen(char **tab)
 
 	i = 0;
 	if (!tab)
-		return (0);
+		return (i);
 	while (tab[i] != '\0')
 		i++;
 	return (i);
@@ -29,11 +29,11 @@ int		get_size(char *path, t_env *env)
 	int fd;
 	char *line;
 	int nb_col;
-	int j;
+	int nb_lines;
 	int i;
 
 	nb_col = 0;
-	j = 0;
+	nb_lines = 0;
 	fd = open(path, O_RDONLY);
 	while (get_next_line(fd, &line) > 0)
 	{
@@ -41,13 +41,13 @@ int		get_size(char *path, t_env *env)
 		if (i > nb_col && nb_col == 0)
 			nb_col = i;
 		if (i != nb_col)
-			return (0);
-		j++;
+			return (1);
+		nb_lines++;
 	}
-	env->lines = j;
+	env->lines = nb_lines;
 	env->col = nb_col;
 	close(fd);
-	return (1);
+	return (0);
 }
 
 int		ft_read(char *path, t_env *env)
@@ -58,13 +58,13 @@ int		ft_read(char *path, t_env *env)
 	int		i;
 	int		j;
 
-	if (!(get_size(path, env)))
+	if (get_size(path, env))
 	{
-		ft_putendl("Warning the file has an error.");
-		return (0);
+		ft_putendl("ERROR: the file has a line error.");
+		return (1);
 	}
 	if (!(env->mapi = malloc(sizeof(int *) * env->lines)))
-		return (0);
+		return (1);
 	fd = open(path, O_RDONLY);
 	i = -1;
 	while (++i < env->lines)
@@ -72,11 +72,11 @@ int		ft_read(char *path, t_env *env)
 		get_next_line(fd, &line);
 		tab = ft_strsplit(line, ' ');
 		if (!(env->mapi[i] = malloc(sizeof(int) * env->col)))
-			return (0);
+			return (1);
 		j = -1;
 		while (++j < env->col)
 			env->mapi[i][j] = ft_atoi(tab[j]);
 	}
 	close (fd);
-	return (1);
+	return (0);
 }
