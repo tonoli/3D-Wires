@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/21 23:03:34 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/11 21:34:00 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/12 22:22:22 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 # include "minilibx/mlx.h"
 # include <math.h>
 
-# define WIDTH		1560
-# define HEIGHT		600
-# define RED		255
-# define GREEN		255
+# define WIDTH		1360
+# define HEIGHT		900
+# define RED		156
+# define GREEN		200
 # define BLUE		255
 # define ESC_KEY	53
 
@@ -45,17 +45,19 @@ typedef struct		s_env
 	void	*ptr_img;
 	char	*img_str;
 	int 	**mapi;
+	t_point	**grid;
+	t_point view;
 	int		lines;
 	int		col;
+	int		depth;
 	int		bpp;
 	int		size_line;
 	int		endian;
-	t_point start;
-	t_point	end;
 	t_diff	diff;
 }					t_env;
 
 int		ft_read(char *path, t_env *env);
+void	parse(t_env *env);
 void	fill_pixel(int x, int y, t_env *env);
 void    create_image(t_env *env);
 void    fill_img(t_env *env);
