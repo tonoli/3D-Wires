@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fill_image.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/21 22:48:46 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/13 18:01:39 by itonoli-         ###   ########.fr       */
+/*   Created: 2017/03/23 17:59:42 by itonoli-          #+#    #+#             */
+/*   Updated: 2017/05/14 00:32:53 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		main(int argc, char **argv)
-{
-	t_env		env;
 
-	if (argc != 2)
+/*
+void	draw_cube(t_env *env)
+{
+	int x, y;
+
+	x = 0;
+	while (x < HEIGHT)
 	{
-		ft_putendl("Usage : ./fdf <filename> [ ... ]");
-		return (0);
+		y = 0;
+		while (y < WIDTH)
+		{
+			//mlx_pixel_put(env->mlx, env->win, x, y, CO);
+			//fill_pixel(env, x, y, CO);
+			if (x > 200 && x < 200 && y>200 && y < 200)
+				env->img_data[x * WIDTH + y] = 0xFFFFFF;
+			y++;
+		}
+		x++;
 	}
-	initenv(&env);
-	ft_read(argv[1], &env);
-	parse(&env);
-	fill_img(&env);
-//	run(env->win, &env);
-	mlx_loop(env.mlx);
-	return (0);
+}
+*/
+void	fill_img(t_env *env)
+{
+	draw_lines(env);
+	//draw_test(env);
+	mlx_put_image_to_window(env->mlx, env->win, env->ptr_img, 0, 0);
 }

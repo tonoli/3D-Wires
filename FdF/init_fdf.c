@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_fdf.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/21 22:48:46 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/13 18:01:39 by itonoli-         ###   ########.fr       */
+/*   Created: 2017/05/13 17:58:30 by itonoli-          #+#    #+#             */
+/*   Updated: 2017/05/13 21:18:56 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		main(int argc, char **argv)
+void	initenv(t_env *env)
 {
-	t_env		env;
-
-	if (argc != 2)
-	{
-		ft_putendl("Usage : ./fdf <filename> [ ... ]");
-		return (0);
-	}
-	initenv(&env);
-	ft_read(argv[1], &env);
-	parse(&env);
-	fill_img(&env);
-//	run(env->win, &env);
-	mlx_loop(env.mlx);
-	return (0);
+	env->mlx = mlx_init();
+	env->win = mlx_new_window(env->mlx, WIDTH, HEIGHT, "Au Fil du Fer...");
+	env->ptr_img = mlx_new_image(env->mlx, WIDTH, HEIGHT);
+	env->img_data = (int *)mlx_get_data_addr(env->ptr_img, &env->bpp, &env->size_line, &env->endian);
 }
