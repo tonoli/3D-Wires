@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/21 22:48:46 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/13 18:01:39 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/16 23:44:32 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		main(int argc, char **argv)
 	ft_read(argv[1], &env);
 	parse(&env);
 	fill_img(&env);
+	mlx_key_hook(env.win, key_hook, &env);
 //	run(env->win, &env);
 	mlx_loop(env.mlx);
 	return (0);

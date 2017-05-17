@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/21 23:03:34 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/14 00:31:31 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/16 23:44:30 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft/libft.h"
 # include "minilibx/mlx.h"
+# include "macros.h"
 # include <math.h>
 
 # define WIDTH		1360
@@ -35,8 +36,8 @@ typedef struct	s_diff
 {
 	int		x;
 	int		y;
-	int		abs_x;
-	int		abs_y;
+	int		absx;
+	int		absy;
 }				t_diff;
 
 typedef struct		s_env
@@ -47,11 +48,24 @@ typedef struct		s_env
 	int		*img_data;
 	int 	**mapi;
 	t_point	**grid;
+	t_point	poss;
+	int		zoom;
+	int		deepth;
+	double	rot;
+	int		proj;
+	int		move_h;
+	int		move_v;
 	int		lines;
 	int		col;
 	int		bpp;
 	int		size_line;
 	int		endian;
+	int		dx;
+	int		dy;
+	int		x_start;
+	int		y_start;
+	int		x_end;
+	int		y_end;
 	t_diff	diff;
 }					t_env;
 
@@ -59,8 +73,10 @@ typedef struct		s_env
 int		ft_read(char *path, t_env *env);
 void	parse(t_env *env);
 void	initenv(t_env *env);
+int		key_hook(int key, t_env *env);
 //void	fill_pixel(t_env *env, int x, int y, int color);
 void    fill_img(t_env *env);
+void	new_img(t_env *env);
 void    draw(t_env *env, t_point start, t_point end);
 void    draw_lines(t_env *env);
 void    draw_col(t_env *env);

@@ -6,15 +6,19 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 17:59:42 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/14 00:32:53 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/16 11:11:41 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 
-/*
-void	draw_cube(t_env *env)
+	/*
+	 *
+	 * Draw the menu and arrows
+	 *
+	 */
+void	draw_menu(t_env *env)
 {
 	int x, y;
 
@@ -33,7 +37,14 @@ void	draw_cube(t_env *env)
 		x++;
 	}
 }
-*/
+
+void	new_img(t_env *env)
+{
+	mlx_destroy_image(MLX, IMG);
+	IMG = mlx_new_image(MLX, WIDTH, HEIGHT);
+	DATA = (int*)mlx_get_data_addr(IMG, &BPP, &SL, &ENDIAN);
+}
+
 void	fill_img(t_env *env)
 {
 	draw_lines(env);
