@@ -1,54 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/17 23:46:23 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/18 00:20:19 by itonoli-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 /* XPM */
-#include "../fdf.h"
-
-static char *favicon_32x32[] = {
-"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-"XXXXXXXXXXX.... .XXX     X. ....",
-"XXXXXXXXXX.  ...XXXX .. XX. ....",
-"XXXXXXXXX.... .XXXXX...XXX..  . ",
-"XXXXXXXX......XXXXXX. XXXX....  ",
-"XXXXXXX.   ..XXXXXXX.XXXXX. ....",
-"XXXXXX..  ..XXXXXXXXXXXXXX..  . ",
-"XXXXX .....XXXXXXXXXXXXXX... ..X",
-"XXXX ..  .XXXXXXXXXXXXXX...  .XX",
-"XXX. . ..XXXXXXXXXXXXXX.  .. XXX",
-"XX . ...XXXXXXXXXXXXXX.     XXXX",
-"X. ....XXXXXXXXXXXXXX.. .. XXXXX",
-".......XXXXXXXXXXXXX..  ..XXXXXX",
-"  .  .... ..... ..XX...  .XXXXX.",
-" ...........  . ..XX..... XXXX..",
-"............     .XX.. ...XXX...",
-"........ . ..   ..XX.  ...XX..  ",
-"XXXXXXXXXXX... ...XX...  .X...  ",
-"XXXXXXXXXXXX .....XXXXXXXXXXXXXX",
-"XXXXXXXXXXXX......XXXXXXXXXXXXXX",
-"XXXXXXXXXXXX.. ...XXXXXXXXXXXXXX",
-"XXXXXXXXXXXX... ..XXXXXXXXXXXXXX",
-"XXXXXXXXXXXX......XXXXXXXXXXXXXX",
-"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-};
-
- char *logo[] = {
+static char *logo[] = {
+/* columns rows colors chars-per-pixel */
+"573 402 3 1 ",
+"  c #070707",
+". c gray3",
+"X c None",
+/* pixels */
 "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX .  .    . . .. .  .. ...  . ..  .     . .  ...  . ...   .. ....  .... ...   .   .. ...  .  ..  ....  .  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX .  . ..   ..         .. . . .      .... .  ...  .  ..    .. . .  . .. .. .. . . .. .. .. . .. . ..  .   . .. .    ..     ..     ..  ..    .  .  . .....    ...    .. . . .....   ..    . ... ... . .   . .  .. . .",
 "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.. .    . .. ..  .. .  .... ..  .  .   .     .. ..  . .. . .  .... ....  . . ...  . ..  .    ..   ...  ..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX. . . ... .... . .  .  ..   .  .  .   ..... .      .  ..  ...... ..  .  . .  ....  . ...   . ...... ....X     .... .   ..   . . ..  . ...... ... . .. .......   . ..  .  .     . . ...  .     . .        . ....... ",
 "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX    . . .... ....  . .  .  ...  .  . .. .  .. . .. ..    . .  .  .. ..      .      .. . .  .  . .. .   . XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  ... . ..          .   .  .    . .    ..   . .  .   . ....   .....     .  .   .. .  .. .  .. .  .. .. XX . ..... ... ..  ...    .....  . . .   ... ... ..  .   .... ...  .  . ... .   .    . . ..  ....   .    .  ",
@@ -452,34 +409,3 @@ static char *favicon_32x32[] = {
 "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX. ...    ..   ...  .  . .......  ... . ...... ... .     . .... . ... ..    .. ... . . . .   .  ... .......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX. .  ..   . . . ...    . .. ... .    ......     . ..      ..  .  ..   .  .. . . .. .. ....    .....    . .XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 };
-
-
-void print_xmp(void *mlx, void *win, char **file)
-{
-	int y = 0;
-	int x;
-
-	while (y < 32)
-		{
-			x = 0;
-			while (x < 32)
-			{
-				if (file[x][y] == '.' || file[x][y] == ' ')
-					mlx_pixel_put(mlx, win, y, x, 0xFFFFFF);
-				x++;
-			}
-		y++;
-		}
-}
-int		main(int argc, char **argv)
-{
-	void *mlx;
-	void *win;
-
-	if (argc && argv)
-	{}
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 1350, 600, "TEST");
-	print_xmp(mlx, win, favicon_32x32);
-	mlx_loop(mlx);
-}

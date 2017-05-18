@@ -5,29 +5,51 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/21 22:48:46 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/18 01:57:36 by itonoli-         ###   ########.fr       */
+/*   Created: 2017/05/10 21:57:43 by itonoli-          #+#    #+#             */
+/*   Updated: 2017/05/10 22:05:28 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+/*
+ * In this file you will find all the test main for the functions I use on my fdf program
+ */
 
-int		main(int argc, char **argv)
+/*
+ * TEST read.c --> OK 
+ */
+
+int	main (int argc, char **argv)
 {
-	t_env		env;
+	t_env env;
+	int i = -1;
 
 	if (argc != 2)
 	{
-		ft_putendl("Usage : ./fdf <filename> [ ... ]");
+		ft_putendl("Error");
 		return (0);
 	}
-	initenv(&env);
-	ft_read(argv[1], &env);
-	parse(&env);
-	fill_img(&env);
-	mlx_key_hook(env.win, key_hook, &env);
-	mlx_mouse_hook (env.win, mouse_hook, &env);
-//	run(env->win, &env);
-	mlx_loop(env.mlx);
-	return (0);
+	if(ft_read(argv[1], &env))
+	{
+		ft_putendl("File ERROR 666");
+		return (0);
+	}
+	else
+	{
+		while (++i < env.lines)
+		{
+			int j = -1;
+			while(++j < env.col)
+			{
+				ft_putnbr(env.mapi[i][j]);
+				ft_putchar(' ');
+			}
+			ft_putchar('\n');
+		}
+		return (0);
+	}
 }
+
+/*
+ * TEST 
+ */
+

@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 15:46:04 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/17 00:28:01 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/18 01:29:20 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,11 @@
 #define COL env->col
 #define DIFX env->dx
 #define DIFY env->dy
-#define ROT env->rot
-
-
-/*int		zoom;
-int		deepth;
-int		move_h;
-int		move_v;
-int		lines;
-int		col;
-int		bpp;
-int		size_line;
-int		endian;
-*/
+#define ROTP env->rotp
+#define ROTI0 env->roti0
+#define ROTI1 env->roti1
+#define COLOR env->color
+#define PROJ env->proj
 
 /*
  * Keyboard numbers
@@ -55,8 +47,25 @@ int		endian;
 #define RIGHT		124
 #define PLUS		69
 #define MOINS		78
+#define PAGEUP		116
+#define PAGEDOWN	121
 #define SPACE		49
 #define W			13
 #define S			1
 #define A			0
 #define D			2
+#define Z			6
+#define X			7
+#define C			8
+#define V			9
+#define R			15
+
+/*
+ * Colors
+ */
+
+#define LIGHTBLUE	0x4FC3F7
+#define WHITE		0xFFFFFF
+#define RED			0xF44336
+#define GREEN		0x4CAF50
+#define ORANGE		0xFB8C00
