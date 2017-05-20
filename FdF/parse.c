@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 14:38:25 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/17 18:45:10 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/19 21:24:38 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ void	parse_iso(t_env *env)
 	int		x;
 	int		y;
 
-	env->grid = (t_point **)malloc(sizeof(t_point *) * LINES);
+	if (!(env->grid = (t_point **)malloc(sizeof(t_point *) * LINES)))
+		ft_puterror("ERROR : malloc failed");
 	x = -1;
 	while (++x < LINES)
 	{
-		env->grid[x] = (t_point *)malloc(sizeof(t_point) * COL);
+		if (!(env->grid[x] = (t_point *)malloc(sizeof(t_point) * COL)))
+			ft_puterror("ERROR : malloc failed");
 		y = -1;
 		while (++y < COL)
 		{
@@ -30,6 +32,7 @@ void	parse_iso(t_env *env)
 				env->move_v + MAP[x][y] * sin(-0.3) * env->deepth;
 			GRID[x][y].y = (y * cos(ROTI0 + 0.1)  + sin(-0.3 + ROTI0) * x) * env->zoom +
 				env->move_h + MAP[x][y] * cos(1.9) * env->deepth;
+			GRID[x][y].z = MAP[x][y];
 		}
 	}
 }
@@ -40,11 +43,13 @@ void	parse_parallel(t_env *env)
 	int		x;
 	int		y;
 
-	env->grid = (t_point **)malloc(sizeof(t_point *) * LINES);
+	if (!(env->grid = (t_point **)malloc(sizeof(t_point *) * LINES)))
+		ft_puterror("ERROR : malloc failed");
 	x = -1;
 	while (++x < LINES)
 	{
-		env->grid[x] = (t_point *)malloc(sizeof(t_point) * COL);
+		if (!(env->grid[x] = (t_point *)malloc(sizeof(t_point) * COL)))
+			ft_puterror("ERROR : malloc failed");
 		y = -1;
 		while (++y < COL)
 		{

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: itonoli- <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/06 18:25:44 by itonoli-          #+#    #+#              #
-#    Updated: 2017/03/21 17:24:52 by itonoli-         ###   ########.fr        #
+#    Updated: 2017/05/19 20:58:06 by itonoli-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,7 @@ ft_lstsize.c \
 ft_join.c \
 get_next_line.c \
 ft_char_counter.c \
+ft_puterror.c \
 
 OBJ= $(SRC:.c=.o)
 
@@ -89,7 +90,7 @@ $(NAME):
 	@ $(CC) $(FLAGS) -c $(SRC)
 	@ ar rc  $(NAME) $(OBJ)
 	@ ranlib $(NAME)
-	@ echo "Libft compiling......OK"
+	@ echo  "\033[32mLIBFT : Compilation done !\033[0m"
 
 clean:
 	@ rm -f $(OBJ)

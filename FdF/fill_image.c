@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 17:59:42 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/18 01:13:49 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/19 23:30:34 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,16 @@ void	draw_menu(t_env *env)
 {
 	int x;
 	int y;
-//	int marginx;
-//	int marginy;
 
 	x = 0;
-//	marginx = 1/10 * HEIGHT;
-//	marginy = 1/10 * WIDTH;
 	while (x < HEIGHT)
 	{
 		y = 0;
 		while (y < WIDTH)
 		{
-			//mlx_pixel_put(env->mlx, env->win, x, y, CO);
-			//fill_pixel(env, x, y, CO);
-		//	if (x > marginx && x < 3 * marginx && y > marginy && y < 3 * marginy)
-				env->menu_data[x * WIDTH + y] = WHITE;
+			env->menu_data[x * WIDTH + y] = WHITE;
+			if ((x < 42 && x > 39) || (x < 150 && x > 147))
+				env->menu_data[x * WIDTH + y] = 0x000000;
 			y++;
 		}
 		x++;

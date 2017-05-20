@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/21 23:03:34 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/18 01:27:41 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/19 22:46:58 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "libft/libft.h"
 # include "minilibx/mlx.h"
 # include "macros.h"
-# include "icones.h"
 # include <stdio.h> //POPOPO
 # include <math.h>
 
@@ -28,6 +27,7 @@ typedef struct		s_point
 {
 	int		x;
 	int		y;
+	int		z;
 	int		color;
 }					t_point;
 
@@ -44,13 +44,17 @@ typedef struct		s_env
 	void	*mlx;
 	void	*win;
 	void	*ptr_img;
+	void	*logo;
+	void	*icon_help;
+	void	*icon_color;
+	void	*icon_reset;
 	int		*img_data;
 	void	*ptr_menu;
 	int		*menu_data;
 	int 	**mapi;
 	t_point	**grid;
 	t_point	poss;
-	int		zoom;
+	double	zoom;
 	int		deepth;
 	double	rotp;
 	double	roti0;
@@ -74,14 +78,15 @@ typedef struct		s_env
 }					t_env;
 
 
-int		ft_read(char *path, t_env *env);
+void	ft_read(char *path, t_env *env);
 void	parse(t_env *env);
 void	new_menu(t_env *env);
 void	initenv(t_env *env);
 void	init_val(t_env *env);
+void	init_zoom(t_env *env);
 int		key_hook(int key, t_env *env);
 int		mouse_hook(int key, int x, int y, t_env *env);
-void	put_color(t_env *env, int x0, int y0);
+void	put_color(t_env *env, t_point start, t_point end);
 void 	put_xmp(t_env *env);
 //void	fill_pixel(t_env *env, int x, int y, int color);
 void    fill_img(t_env *env);

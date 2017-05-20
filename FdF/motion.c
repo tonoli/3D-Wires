@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 20:21:53 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/18 01:34:40 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/19 23:15:47 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	reinit(t_env *env)
 {
 	new_img(env);
 	init_val(env);
+	init_zoom(env);
 	parse(env);
 	fill_img(env);
 }
@@ -38,10 +39,17 @@ void	move(t_env *env, int key)
 void	zoom(t_env *env, int key)
 {
 	new_img(env);
-	if (key == PLUS)
-		env->zoom += 5;
-	else if (key == MOINS)
-		env->zoom -=5;
+
+	if (env->zoom <= 0.5)
+		env->zoom += (key == PLUS) ? 0.1 : 0;
+	if (env->zoom > 0.5 && env->zoom <= 1)
+		env->zoom += (key == PLUS) ? 0.1 : -0.1;
+	else if (env->zoom <= 5 && env->zoom > 1)
+		env->zoom += (key == PLUS) ? 1 : -1;
+	else if (env->zoom > 5 && env->zoom <= 100)
+		env->zoom += (key == PLUS) ? 5 : -5;
+	else if (env->zoom > 100)
+		env->zoom += (key == PLUS) ? 0 : -5;
 	parse(env);
 	fill_img(env);
 }
@@ -61,28 +69,15 @@ void	rotate(t_env *env, int key)
 {
 	new_img(env);
 	if (PROJ == 1)
-	{
-		if (key == A)
-			ROTI0 += 0.1;
-		else if (key == D)
-			ROTI0 -= 0.1;
-		printf("%s%f%s","RATI0 : ", ROTI0, "\n");
-	}
+		ROTI0 += (key == A)? 0.1 : -0.1;
 	else
-	{
-		if (key == A)
-			ROTP += 0.1;
-		else if (key == D)
-			ROTP -= 0.1;
-	}
+		ROTP += (key == A)? 0.1 : -0.1;
 	if (key == W)
 	{
 		ROTI1 += 0.1;
 	}
 	else if (key == S)
 		ROTI1 -= 0.1;
-	printf("%s%f%s","RATI1 : ", ROTI1, "\n");
-	ft_putendl(" ");
 	parse(env);
 	fill_img(env);
 }
@@ -97,7 +92,7 @@ void	proj(t_env *env)
 void	color(t_env *env)
 {
 	new_img(env);
-	if (COLOR == 3)
+	if (COLOR == 4)
 		COLOR = 0;
 	else
 		COLOR++;
@@ -107,11 +102,12 @@ void	color(t_env *env)
 
 int	mouse_hook(int bouton, int x, int y, t_env *env)
 {
-	if(x && y)
-	if (bouton == 1)
+	if (bouton == 1 && x >= 9 && x <= 41 && y >= 170 && y <= 202)
 		color(env);
-	ft_putnbr(bouton);
-	ft_putendl(" ");
+	if (bouton == 1 && x >= 9 && x <= 41 && y >= 100 && y <= 132)
+		reinit(env);
+	if (bouton == 1 && x >= 9 && x <= 41 && y >= 100 && y <= 132)
+		proj(env);
 	return (0);
 }
 

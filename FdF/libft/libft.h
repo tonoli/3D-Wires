@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itonoli- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 18:55:20 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/03/21 17:25:38 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/19 20:27:50 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+void			ft_puterror(char *str);
 int				ft_char_counter(char *str, char c);
 int				get_next_line(const int fd, char **line);
 void			*ft_memset(void *b, int c, size_t len);

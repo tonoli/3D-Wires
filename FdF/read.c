@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 15:08:18 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/18 02:00:12 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/19 20:30:47 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int		get_size(char *path, t_env *env)
 	return (0);
 }
 
-int		ft_read(char *path, t_env *env)
+
+void	ft_read(char *path, t_env *env)
 {
 	int		fd;
 	char	*line;
@@ -59,12 +60,9 @@ int		ft_read(char *path, t_env *env)
 	int		j;
 
 	if (get_size(path, env))
-	{
-		ft_putendl("ERROR: the file has a line error.");
-		return (1);
-	}
+		ft_puterror("ERROR: input file has a line error or is corrupted");
 	if (!(env->mapi = malloc(sizeof(int *) * env->lines)))
-		return (1);
+		ft_puterror("ERROR : malloc failed");
 	fd = open(path, O_RDONLY);
 	i = -1;
 	while (++i < env->lines)
@@ -72,11 +70,10 @@ int		ft_read(char *path, t_env *env)
 		get_next_line(fd, &line);
 		tab = ft_strsplit(line, ' ');
 		if (!(env->mapi[i] = malloc(sizeof(int) * env->col)))
-			return (1);
+			ft_puterror("ERROR : malloc failed");
 		j = -1;
 		while (++j < env->col)
 			env->mapi[i][j] = ft_atoi(tab[j]);
 	}
 	close (fd);
-	return (0);
 }

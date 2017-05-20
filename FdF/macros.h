@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 15:46:04 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/18 01:29:20 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/19 22:49:01 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@
 #define ROTI1 env->roti1
 #define COLOR env->color
 #define PROJ env->proj
+#define LOGO env->logo
+#define HELP env->icon_help
+#define RESET env->icon_reset
+#define ICOLOR env->icon_color
+
 
 /*
  * Keyboard numbers
@@ -69,3 +74,5 @@
 #define RED			0xF44336
 #define GREEN		0x4CAF50
 #define ORANGE		0xFB8C00
+#define GREY		0x757575
+#define BROWN		0x795548
