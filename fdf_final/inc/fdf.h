@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/21 23:03:34 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/20 22:59:41 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/21 14:43:57 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct		s_env
 	void	*ptr_menu;
 	int		*menu_data;
 	int		**mapi;
+	int		**map_color;
 	t_point	**grid;
 	t_point	poss;
 	double	zoom;

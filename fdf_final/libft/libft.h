@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 18:55:20 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/19 20:27:50 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/21 15:58:30 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <fcntl.h>
 # define ABS(value) ((value < 0) ? -(value) : value)
 # define BUFF_SIZE 1
+# define ALPHABET "0123456789abcdefghijklmnopqrstuvwxyz"
 
 typedef struct	s_list
 {
@@ -28,6 +29,10 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+long			ft_power(int valeur, int power);
+long			ft_strtol(char *str, char **endptr, int base);
+int				**ft_memtab(int lines, int col);
+int				ft_tablen(char **tab);
 void			ft_puterror(char *str);
 int				ft_char_counter(char *str, char c);
 int				get_next_line(const int fd, char **line);

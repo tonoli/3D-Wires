@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 14:38:25 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/20 23:37:22 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/21 15:31:51 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	parse_iso(t_env *env)
 				sin(-0.3 + ROTI0) * x) * env->zoom + \
 				env->move_h + MAP[x][y] * cos(1.9) * env->deepth;
 			GRID[x][y].z = MAP[x][y];
+			GRID[x][y].color = env->map_color[x][y];
 		}
 	}
 }
@@ -58,6 +59,7 @@ void	parse_parallel(t_env *env)
 			GRID[x][y].y = (cos(ROTP) * y + sin(ROTP) * x) * env->zoom +
 				env->move_h - MAP[x][y] * env->deepth;
 			GRID[x][y].z = MAP[x][y];
+			GRID[x][y].color = env->map_color[x][y];
 		}
 	}
 }

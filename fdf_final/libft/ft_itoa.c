@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itonoli- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 16:45:46 by itonoli-          #+#    #+#             */
-/*   Updated: 2016/11/28 20:28:37 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/21 15:48:29 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_power(unsigned int power)
+static int	ft_pow(unsigned int power)
 {
 	int					dix;
 
@@ -60,8 +60,8 @@ char		*ft_itoa(int n)
 		str[i++] = '-';
 	while (power != 0)
 	{
-		str[i++] = nbr / ft_power(power) + '0';
-		nbr = nbr % ft_power(power--);
+		str[i++] = nbr / ft_pow(power) + '0';
+		nbr = nbr % ft_pow(power--);
 	}
 	str[i] = nbr + '0';
 	str[i + 1] = '\0';

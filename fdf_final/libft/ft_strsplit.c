@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itonoli- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 21:06:56 by itonoli-          #+#    #+#             */
-/*   Updated: 2016/11/28 19:00:55 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/21 11:35:38 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,19 +94,17 @@ char		**ft_strsplit(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	i = 0;
+	i = -1;
 	m = ft_count_words(s, c);
 	if (!(tab = (int *)malloc((sizeof(int)) * m + 1)))
 		return (NULL);
 	tab = ft_count_letters(tab, s, c);
 	if (!(dest = (char **)malloc((sizeof(char *)) * m + 1)))
 		return (NULL);
-	while (i < m)
-	{
+	while (++i < m)
 		dest[i] = (char *)malloc(sizeof(char) * tab[i]);
-		i++;
-	}
 	dest = ft_spliter(dest, s, c);
+	free(tab);
 	dest[m] = 0;
 	return (dest);
 }

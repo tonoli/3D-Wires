@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puterror.c                                      :+:      :+:    :+:   */
+/*   ft_tablen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/19 19:55:13 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/21 11:50:37 by itonoli-         ###   ########.fr       */
+/*   Created: 2017/05/21 13:07:45 by itonoli-          #+#    #+#             */
+/*   Updated: 2017/05/21 13:08:13 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_puterror(char *str)
+int		ft_tablen(char **tab)
 {
-	ft_putendl(str);
-	exit(0);
+	int i;
+
+	i = 0;
+	if (!tab)
+		return (i);
+	while (tab[i] != '\0')
+		i++;
+	return (i);
 }

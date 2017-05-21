@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 19:04:18 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/20 21:06:31 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/21 15:31:53 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,32 +58,37 @@ int		red_color(t_point start, t_point end)
 
 int		earth_color(t_point start, t_point end)
 {
-	int	color;
+	int	c;
 
 	if (start.z == end.z)
 	{
 		if (start.z == 0)
-			color = LIGHTBLUE;
+			c = LIGHTBLUE;
 		else
-			color = BROWN;
+			c = BROWN;
 	}
 	else
 	{
-		color = GREEN;
+		c = GREEN;
 	}
-	return (color);
+	return (c);
 }
 
 void	put_color(t_env *env, t_point start, t_point end)
 {
-	if (COLOR == 0)
-		DATA[start.x * WIDTH + start.y] = standard(start, end);
-	if (COLOR == 1)
-		DATA[start.x * WIDTH + start.y] = arg_color(start.x);
-	if (COLOR == 2)
-		DATA[start.x * WIDTH + start.y] = red_color(start, end);
-	if (COLOR == 3)
-		DATA[start.x * WIDTH + start.y] = earth_color(start, end);
-	if (COLOR == 4)
-		DATA[start.x * WIDTH + start.y] = LIGHTBLUE;
+	if (start.color == 0)
+	{
+		if (COLOR == 0)
+			DATA[start.x * WIDTH + start.y] = standard(start, end);
+		if (COLOR == 1)
+			DATA[start.x * WIDTH + start.y] = arg_color(start.x);
+		if (COLOR == 2)
+			DATA[start.x * WIDTH + start.y] = red_color(start, end);
+		if (COLOR == 3)
+			DATA[start.x * WIDTH + start.y] = earth_color(start, end);
+		if (COLOR == 4)
+			DATA[start.x * WIDTH + start.y] = LIGHTBLUE;
+	}
+	else
+		DATA[start.x * WIDTH + start.y] = start.color;
 }
