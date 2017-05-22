@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 15:08:18 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/21 16:06:04 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/22 12:02:39 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int		read_number(char *str, t_env *env, int x, int y)
 	int i;
 
 	i = -1;
+	if (str[0] == '-')
+		i++;
 	while (ft_isdigit(str[++i]))
 		;
 	if (ft_strncmp(&str[i], ",0x", 3) == 0)

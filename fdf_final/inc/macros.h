@@ -6,7 +6,7 @@
 /*   By: itonoli- <itonoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 15:46:04 by itonoli-          #+#    #+#             */
-/*   Updated: 2017/05/20 23:10:12 by itonoli-         ###   ########.fr       */
+/*   Updated: 2017/05/21 18:00:56 by itonoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 # define ZOOM env->icon_zoom
 
 # define WIDTH		1360
-# define HEIGHT	900
+# define HEIGHT		900
 
 # define UP			126
 # define DOWN		125
